@@ -81,11 +81,30 @@ impl Category {
 fn index_get(c :char) -> usize
 {
     let code = c as usize;
-    if  code > A_INDEX  {
+    if  code >= A_INDEX  {
         code - A_INDEX
     } else {
-        0
+        NUM_OF_AB
     }
+}
+
+fn second_key_get(mut si :std::str::Chars, key1: usize) -> usize
+{
+    let mut key2 = key1;
+    while  key2 == key1  {
+        let key_n = 
+            match  si.next()  {
+                None    => NUM_OF_AB,
+                Some(c) => index_get(c),
+                //Some(c) => 0,
+            };
+        if  key_n == NUM_OF_AB  {
+            break;
+        } else {
+            key2 = key_n;
+        }
+    }
+    key2 
 }
 
 fn main() {
@@ -104,12 +123,7 @@ fn main() {
 
         let mut si = s1.chars();
         let frst = index_get(si.next().unwrap());
-        let scnd = 
-            match  si.next()  {
-                None    => 0,
-                Some(c) => index_get(c),
-                //Some(c) => 0,
-            };
+        let scnd = second_key_get(si, frst);
         if  !prize.is_active(frst, scnd)  {
             prize.activate(frst, scnd);
         }

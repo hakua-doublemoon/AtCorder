@@ -22,8 +22,8 @@ def put_char(formar)
             #puts formar
             return
         else 
-            #if  len == 10  then
-            if  len == 4  then
+            if  len == 10  then
+            #if  len == 4  then
                 $count += 1
                 puts formar
                 return
