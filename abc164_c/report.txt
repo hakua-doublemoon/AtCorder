@@ -1,0 +1,13 @@
+$ time (cat input.txt | ./target/release/abc164_c)
+192595
+
+（ツリー１段）
+real    0m2.048s
+user    0m2.016s
+sys     0m0.000s
+
+（ツリー２段）
+real    0m0.303s
+user    0m0.234s
+sys     0m0.000s
+
